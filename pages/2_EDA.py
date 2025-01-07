@@ -7,7 +7,7 @@ import seaborn as sns
 st.set_page_config(page_title="Exploratory Data Analysis", page_icon="📊")
 
 # Streamlit app title for the EDA page
-st.title("Exploratory Data Analysis (EDA)")
+st.title("📊 Exploratory Data Analysis (EDA)")
 
 # File path to the dataset
 file_path = 'C:/Users/Dell/Desktop/prog/ids/new project/data/user_behavior_dataset.csv'  # Adjust if the file path differs
@@ -37,13 +37,17 @@ def summary_statistics(data):
     
     return pd.DataFrame(summary)
 
+# Updated Function: Missing Value Analysis
 def missing_value_analysis(data):
+    # Count missing values and calculate percentages
     missing_data = data.isnull().sum()
     missing_percentage = (missing_data / len(data)) * 100
+    
+    # Create a DataFrame to display results
     analysis = pd.DataFrame({
         'Missing Values': missing_data,
         'Percentage': missing_percentage
-    }).sort_values(by='Missing Values', ascending=False)
+    })
     return analysis
 
 def outlier_detection(data):
@@ -62,8 +66,8 @@ def outlier_detection(data):
         
         outlier_stats[col] = {
             'Outlier Count': outlier_count,
-            'Lower Bound': lower_bound,
-            'Upper Bound': upper_bound
+            # 'Lower Bound': lower_bound,
+            # 'Upper Bound': upper_bound
         }
     
     return pd.DataFrame(outlier_stats).T
@@ -134,11 +138,16 @@ st.download_button(
 
 # Missing Value Analysis
 st.subheader("Missing Value Analysis")
+
 missing_values = missing_value_analysis(data)
-if missing_values['Missing Values'].sum() > 0:
-    st.dataframe(missing_values)
+
+# Always display the missing value table, even if all values are 0
+st.dataframe(missing_values)
+
+if missing_values['Missing Values'].sum() == 0:
+    st.success("No missing values in the dataset!")
 else:
-    st.write("No missing values in the dataset.")
+    st.info("The table shows the count and percentage of missing values for each column.")
 
 # Outlier Detection
 st.subheader("Outlier Detection")

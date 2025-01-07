@@ -3,7 +3,7 @@ import streamlit as st
 def main():
     # Page Title
     st.set_page_config(page_title="Home - Data Science Project", page_icon="🏠")
-    st.title("🏠 Welcome to My Data Science Project")
+    st.title("Dataset: Mobile Device Usage and User Behavior Dataset")
 
     # Welcome Message
     st.markdown(
@@ -38,7 +38,7 @@ def main():
     st.header("🔗 Useful Links")
     st.markdown(
         """
-        - [📂 GitHub Repository](https://github.com/affanabid)  
+        - [📂 GitHub Repository](https://github.com/affanabid/Device-Usage-Behavior)  
         - [📄 Documentation](https://docs.streamlit.io/)  
         - [📧 Contact Me](mailto:affanabid31@gmail.com)
         """
