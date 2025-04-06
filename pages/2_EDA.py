@@ -10,7 +10,7 @@ st.set_page_config(page_title="Exploratory Data Analysis", page_icon="📊")
 st.title("📊 Exploratory Data Analysis (EDA)")
 
 # File path to the dataset
-file_path = 'C:/Users/Dell/Desktop/prog/ids/new project/data/user_behavior_dataset.csv'  # Adjust if the file path differs
+file_path = '../data/user_behavior_dataset.csv' 
 
 # Load the dataset using st.cache_data
 @st.cache_data
